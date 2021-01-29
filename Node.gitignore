@@ -14,4 +14,7 @@ dist/
 npm-debug.log
 yarn-error.log
 
+*.pem
 *.tar
+ubuntu*
+
