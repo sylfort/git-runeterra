@@ -3,7 +3,7 @@
   <div class="nav-bar bg-color">
     <div class="nav-container">
       <div class="nav-right">
-        <router-link to="/" class="nav-right">Git Runeterra</router-link>
+        <router-link to="/">Git Runeterra</router-link>
       </div>
       <div class="nav-middle">
         <img focusable="false" class="img-mag" src="@/assets/magnifying-glass.jpg" alt="aaa">
@@ -29,7 +29,8 @@ export default {
 
   methods: {
     keyupHandler(e) {
-      this.$store.state.commit("nameSearch", e.target.value);
+      // console.log(this);
+      this.$store.commit("nameSearch", e.target.value);
     },
     // checkName() {
     //   console.log("Checking name: ${this.keyword}");
@@ -58,6 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .nav {
     // position: fixed;
@@ -65,7 +67,7 @@ export default {
     // top: 0;
     // left: 0;
   &-bar {
-    border: 1px solid red;
+    // border: 1px solid red;
     padding: 10px;
     color: #dfaa43;
     height: 80px;
@@ -76,14 +78,38 @@ export default {
     flex: 1;
     padding: 10px;
     display: flex;
-    flex-direction: row wrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    align-content: flex-start;
+
+         @media only screen and (max-width: 600px) {
+        align-items: center;
+        justify-content: flex-start;
+  }
+  }
+
+  &-right {
+    color: #dfaa43;
+    text-decoration: none;
+    font-size: 4vh;
+    display: flex;
+    flex-flow: row nowrap;
+    min-width: 240px;
+
   }
 
   &-right a{
     color: #dfaa43;
     text-decoration: none;
+    font-size: 4vh;
+    display: flex;
+    flex-flow: row nowrap;
+
+         @media only screen and (max-width: 600px) {
+    flex-flow: row wrap;
+    font-size: 3vh;
+  }
   }
 
   &-middle {
@@ -97,6 +123,11 @@ export default {
     background-color: #ffffff;
     cursor: default;
     margin-left: 120px;
+
+       @media only screen and (max-width: 600px) {
+
+    margin-left: 0px;
+  }
   }
 
   &-middle:hover{
@@ -133,7 +164,15 @@ export default {
   cursor: pointer;
   position: relative;
   right: 10px;
-  width: 70px;
+  width: 80px;
+           @media only screen and (max-width: 600px) {
+  }
+  // font-family: 'Open Sans', sans-serif;
+}
+
+button{
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 </style>

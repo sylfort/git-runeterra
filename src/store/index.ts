@@ -2232,6 +2232,7 @@ export default createStore({
   // onde vai alterar o state
   mutations: {
     nameSearch(state, payload) {
+      console.log("no dispatch", payload);
       state.name = payload;
     },
   },

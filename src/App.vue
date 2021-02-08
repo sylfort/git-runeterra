@@ -69,9 +69,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 html, body {
     height:100%; /*both html and body*/
     min-height: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 body {
     margin: 0; /*reset default margin*/
@@ -101,13 +103,13 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('~@/assets/taric.jpg');
+  // background-image: url('~@/assets/taric.jpg');
 
   z-index: -1;
 }
 
 .main {
-  border: 1px solid rgb(0, 0, 255);
+  // border: 1px solid rgb(0, 0, 255);
   padding: 10px;
   color: rgba(163, 163, 163, 0.719);
   margin: 0px auto;

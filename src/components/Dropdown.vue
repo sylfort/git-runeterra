@@ -42,7 +42,7 @@ export default {
 .dropdown {
   position: relative;
   display: inline-block;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -51,7 +51,8 @@ export default {
   flex-direction: column;
   position: fixed;
   right: 0;
-  margin-top: 29px;
+  margin-top: 31px;
+  padding-right: 5px;
   padding-top: 20px;
   z-index: -100;
 

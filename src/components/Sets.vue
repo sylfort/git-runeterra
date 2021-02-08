@@ -5,9 +5,9 @@
                 Sets
             </div>
             <div>
-                <button class="dropset" @click="isOpen = !isOpen">
+                <div id="dropset" :class= "{ dropsetActive: isOpen }" @click="isOpen = !isOpen">
                     All Sets
-                </button>
+                </div>
             </div>
             <div v-if="isOpen" class="dropdown-sets">
                 <div class="sets">Launch Set</div>
@@ -32,7 +32,7 @@ export default {
     .set-select {
   position: relative;
   display: inline-block;
-  outline: 1px solid yellow;
+  /* outline: 1px solid yellow; */
   min-width: 100%;
   margin-bottom: 15px;
 }
@@ -49,14 +49,19 @@ export default {
   /* position: absolute; */
   left: 0px;
   margin-top: 0px;
-  padding-top: 20px;
-
-  background-color:rgba(5, 17, 29, 0.973);
+  /* padding-top: 5px; */
+  border-bottom: 1px solid goldenrod;
+  border-left: 1px solid goldenrod;
+  border-right: 1px solid goldenrod;
+  background: #041429d3;;
   color:rgb(179, 180, 208);
-  min-width: 160px;
+  min-width: 80px;
   min-height: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  align-items: center;
+  justify-content: space-around;
+
 }
 
 .sets{
@@ -64,5 +69,30 @@ export default {
     align-items: center;
     cursor: pointer;
     overflow: hidden;
+    padding-top: 5px;
+}
+
+.sets:hover{
+  color: goldenrod;
+}
+
+#dropset{
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #041429d3;
+  padding: 5px;
+}
+
+#dropset:hover{
+  color: goldenrod;
+  cursor: pointer;
+}
+
+.dropsetActive {
+  border-top: 1px solid goldenrod;
+  border-left: 1px solid goldenrod;
+  border-right: 1px solid goldenrod;
 }
 </style>
