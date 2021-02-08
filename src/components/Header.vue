@@ -133,7 +133,7 @@ export default {
   cursor: pointer;
   position: relative;
   right: 10px;
-  width: 80px;
+  width: 70px;
 }
 
 </style>
