@@ -103,7 +103,7 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // background-image: url('~@/assets/taric.jpg');
+  background-image: url('~@/assets/taric.jpg');
 
   z-index: -1;
 }

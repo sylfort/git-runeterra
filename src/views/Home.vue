@@ -40,9 +40,9 @@ export default defineComponent({
       return this.$store.state.cards.filter((card) => {
         // Primeiro vamos entrar no if apenas se tiver algo dentro do state.name
         if (this.$store.state.name) {
-          console.log("->", card.name.search(this.$store.state.name) > -1, card.name, this.$store.state.name);
+          console.log("->", card.name.toLowerCase().search(this.$store.state.name) > -1, card.name, this.$store.state.name);
           // Dai retornamos true/false se existe dentro da string o valor digitado
-          return card.name.search(this.$store.state.name) > -1;
+          return card.name.toLowerCase().search(this.$store.state.name) > -1;
         }
 
         if (this.$route.query.ignore_supertype) {

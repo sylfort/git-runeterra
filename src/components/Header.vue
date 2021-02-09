@@ -28,9 +28,15 @@ export default {
   }),
 
   methods: {
+    resetInput() {
+      this.name = "";
+    },
+
     keyupHandler(e) {
+      if (e.key === "Enter") {
+        this.$store.commit("nameSearch", e.target.value.toLowerCase());
+      }
       // console.log(this);
-      this.$store.commit("nameSearch", e.target.value);
     },
     // checkName() {
     //   console.log("Checking name: ${this.keyword}");
@@ -74,7 +80,7 @@ export default {
   }
 
   &-container {
-    border: 1px solid red;
+    // border: 1px solid red;
     flex: 1;
     padding: 10px;
     display: flex;
@@ -82,11 +88,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     align-content: flex-start;
-
-         @media only screen and (max-width: 600px) {
-        align-items: center;
-        justify-content: flex-start;
-  }
   }
 
   &-right {
@@ -96,7 +97,6 @@ export default {
     display: flex;
     flex-flow: row nowrap;
     min-width: 240px;
-
   }
 
   &-right a{
@@ -105,11 +105,6 @@ export default {
     font-size: 4vh;
     display: flex;
     flex-flow: row nowrap;
-
-         @media only screen and (max-width: 600px) {
-    flex-flow: row wrap;
-    font-size: 3vh;
-  }
   }
 
   &-middle {
@@ -165,14 +160,11 @@ export default {
   position: relative;
   right: 10px;
   width: 80px;
-           @media only screen and (max-width: 600px) {
-  }
   // font-family: 'Open Sans', sans-serif;
 }
 
 button{
   font-family: 'Open Sans', sans-serif;
-
 }
 
 </style>
