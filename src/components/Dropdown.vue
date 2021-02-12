@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown">
-    <button class="dropbtn" @click="isOpen = !isOpen">Search Filters</button>
+    <button class="dropbtn btn btn-primary" @click="isOpen = !isOpen">Search Filters</button>
       <div v-if="isOpen" class="dropdown-content">
         <div>
           <sets />
@@ -22,16 +22,16 @@ import Mana from "@/components/Mana.vue";
 import Types from "@/components/Types.vue";
 
 export default {
-  data() {
-    return {
-      isOpen: false,
-    };
-  },
   components: {
     Sets,
     Regions,
     Mana,
     Types,
+  },
+  data() {
+    return {
+      isOpen: false,
+    };
   },
 };
 
@@ -42,6 +42,7 @@ export default {
 .dropdown {
   position: relative;
   display: inline-block;
+  margin: 5px;
   /* border: 1px solid green; */
 }
 
@@ -51,11 +52,9 @@ export default {
   flex-direction: column;
   position: fixed;
   right: 0;
-  margin-top: 31px;
+  margin-top: 37px;
   padding-right: 5px;
   padding-top: 20px;
-  z-index: -100;
-
   background-color:rgba(5, 17, 29, 0.973);
   color:rgb(179, 180, 208);
   min-width: 360px;
@@ -77,12 +76,12 @@ export default {
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #3498DB;
+  /* background-color: #3498DB;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
-  cursor: pointer;
+  cursor: pointer; */
 }
 
 /* Dropdown button on hover & focus */

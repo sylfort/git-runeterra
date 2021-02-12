@@ -1,5 +1,10 @@
 # vue_test
 
+## todos
+- pagina do login, onde vai poder cadastrar?
+- limpar o filtro, clear?
+- input search esta pequeno, mas o campo grande
+
 ## Project setup
 ```
 npm install
@@ -22,4 +27,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-# git-runeterra

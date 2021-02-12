@@ -1,7 +1,7 @@
 <template>
   <div class="background-img"></div>
 
-  <div class="flex" style="flex-direction: column; height: 100vh">
+  <div class="flex">
     <Header />
 
     <div class="main">
@@ -16,6 +16,10 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faUserSecret);
 // const App = {
 //   init() {},
 //   store: {
@@ -77,6 +81,8 @@ html, body {
 }
 body {
     margin: 0; /*reset default margin*/
+    min-height: 75rem;
+    padding-top: 4.5rem;
 }
 
 img {
@@ -87,6 +93,7 @@ img {
 
 .flex {
   display: flex;
+  flex-direction: column;
 }
 
 .background-img{
@@ -103,7 +110,7 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // background-image: url('~@/assets/taric.jpg');
+  background-image: url('~@/assets/taric.jpg');
 
   z-index: -1;
 }
@@ -112,7 +119,7 @@ img {
   // border: 1px solid rgb(0, 0, 255);
   padding: 10px;
   color: rgba(163, 163, 163, 0.719);
-  margin: 0px auto;
+  margin:30px auto;
 
   /* display: flex; */
   /* flex-direction: column; */
