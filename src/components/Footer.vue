@@ -20,6 +20,13 @@ export default {
   bottom: 0;
   z-index: 100;
   color: white;
+  display: flex;
+  align-items: center;
+
+    @media only screen and (max-width: 800px) {
+    position: relative;
+    margin-top: 0;
+  }
 }
 
 </style>

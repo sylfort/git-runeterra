@@ -1,49 +1,39 @@
 <template>
-  <!-- Nav -->
-  <nav class="header navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <div class="nav-left">
-        <router-link to="/">Git Runeterra</router-link>
-      </div>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarsExampleDefault"
-        aria-controls="navbarsExampleDefault"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+  <div class="nav">
+    <div class="mobile">
+      <router-link to="/" class="nav-title hover-light"
+        >Git Runeterra</router-link
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="mobile collapse navbar-collapse" id="navbarsExampleDefault">
-        <div class="search-container">
-
-            <input
-              v-model="name"
-              focusable="false"
-              type="text"
-              @keyup="keyupHandler"
-              class="me-2 search-input"
-              placeholder="Search"
-              aria-label="Search"
-            />
-
-        </div>
-        <div class="nav-right">
-          <button class="btn-login btn btn-secondary">Login</button>
-          <dropdown />
-        </div>
-      </div>
     </div>
-  </nav>
+
+    <label class="hamburger hover-light" for="toggle">&#9776;</label>
+    <input class="nav-toggle" type="checkbox" id="toggle" />
+    <div v-if="showContainer" class="toggle-container">
+      <div class="nav-input-container">
+        <input
+          v-model="name"
+          focusable="false"
+          class="nav-input-searchbox"
+          type="text"
+          placeholder="Search"
+          aria-label="search"
+          @keyup="keyupHandler"
+        />
+      </div>
+      <ul class="nav-menu">
+        <li class="sign-up hover-light">
+          <router-link @click="toggleContainer" to="signup" class="sign-up"
+            >Sign Up</router-link
+          >
+        </li>
+        <li class="nav-dropdown hover-light"><dropdown /></li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
 import Dropdown from "@/components/Dropdown.vue";
-// import MenuIcon from "@/assets/MenuIcon.vue";
-// import SearchIcon from "@/assets/SearchIcon.vue";
 
 export default {
   components: {
@@ -54,6 +44,7 @@ export default {
 
   data: () => ({
     showNav: false,
+    showContainer: true,
     keyword: "",
   }),
 
@@ -76,7 +67,9 @@ export default {
       }
     },
 
-    computed: {},
+    toggleContainer() {
+      this.showContainer = !this.showContainer;
+    },
   },
 };
 </script>
@@ -84,158 +77,192 @@ export default {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-.header{
-  background-color: rgba(5, 17, 29, 0.973)!important;
+a {
+  text-decoration: none;
+}
+
+label {
+  margin: 0 40px 0 0;
+  display: block;
+  cursor: pointer;
+}
+
+#toggle {
+  display: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
 }
 
 .nav {
-  &-bar {
-    // border: 1px solid red;
-    // padding: 5px;
-    // color: #dfaa43;
-    // background-color: rgb(72, 187, 43)!important;
-  }
-
-  &-container {
-    // border: 1px solid red;
-    /* flex: 1; */
-    padding: 5px;
-    margin-top: 0;
-    color: #dfaa43;
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(5, 17, 29, 0.973);
-
-    // align-content: flex-start;
-  }
-
-  &-left {
-    color: #dfaa43;
-    text-decoration: none;
-    font-size: 4vh;
-    // display: flex;
-    // flex-flow: row nowrap;
-    // min-width: 240px;
-    @media only screen and (max-width: 600px) {
-      // order: 2;
-    }
-  }
-
-  &-left a {
-    color: #dfaa43;
-    text-decoration: none;
-    font-size: 4vh;
-    display: flex;
-    flex-flow: row nowrap;
-  }
-
-  &-middle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // width: 70vh;
-    // border: 1px solid #dfe1e5;
-    // border-radius: 24px;
-    // padding: 3px;
-    // margin-left: 0vh;
-    // background-color: #ffffff;
-    // cursor: default;
-    // margin-left: 120px;
-
-    @media only screen and (max-width: 600px) {
-      margin-left: 0px;
-      width: 100%;
-    }
-  }
-
-  &-middle:hover {
-    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-    border-color: rgba(223, 225, 229, 0);
-  }
-
-  &-right {
-    display: flex;
-    justify-content: flex-end;
-    align-content: center;
-    justify-items: center;
-  }
-}
-
-.search-container {
+  background-color: rgba(5, 17, 29, 0.973);
+  padding: 5px;
+  color: #dfaa43;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
 
-.search-input {
-  border: none;
-  width: 40vw;
-  // height: 2vh;
-  // margin-left: 50px;
-  // margin-right: 50px;
-  @media only screen and (max-width: 600px) {
-    //   width: 100%;
-    //   height: 100%;
-    //   margin-left: 50px;
-    //   margin-right: 50px;
+  &-title {
+    font-size: 2rem;
+    color: #dfaa43;
+    white-space: nowrap;
+  }
+
+  &-input {
+    &-container {
+      cursor: default;
+      display: flex;
+      padding: 0.3rem;
+
+      flex-basis: 100%;
+      flex-grow: 1;
+      margin-left: 1rem;
+    }
+
+    &-searchbox {
+      border-radius: 100px;
+      width: 40vw;
+      // border: 2px solid red;
+      padding-left: 0.5rem;
+
+      margin-left: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &-menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+
+    flex-flow: row wrap;
+    margin-left: 0.3rem;
+    text-transform: uppercase;
   }
 }
 
-.search-input:focus {
-  outline: none;
+.mobile {
+  display: flex;
+  align-items: center;
+
+  justify-content: flex-start;
+  flex-basis: 80%;
+  flex-grow: 1;
+  order: -1;
+  margin-left: 1rem;
 }
 
-.img-mag {
-  height: 25px;
-  width: 25px;
-  cursor: default;
-  margin-left: 5px;
+.hamburger {
+  font-size: 1.75rem;
+  margin-right: 1rem;
+  padding: 0 0.5rem;
+  padding: 0.2rem;
+  color: #dfaa43;
+
+  order: -1;
 }
 
-.btn-login {
-  // margin-left: 30px;
-  // margin-right: 10px;
-  // cursor: pointer;
-  // position: relative;
-  // right: 10px;
-  // width: 80px;
-  margin: 5px;
-  font-family: "Open Sans", sans-serif;
+.sign-up {
+  flex-basis: 100%;
+  flex-grow: 1;
+  margin: 0.2rem 0.5rem;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #dfaa43;
+
+  &:hover {
+    text-decoration: none;
+    color: darken(#dfaa43, 10%);
+  }
 }
 
-.navigation-icon {
+.nav-dropdown {
+  margin: 0.2rem 1rem;
+  white-space: nowrap;
+}
+
+// TOGGLE NAV MOBILE
+.toggle-container {
   display: none;
-  @media only screen and (max-width: 600px) {
-    display: block;
-    font-size: 1.5rem;
-    margin-left: 10px;
-    cursor: pointer;
-    order: 1;
-  }
 }
 
-.search-icon {
-  display: none;
-  @media only screen and (max-width: 600px) {
-    display: block;
-    font-size: 1.5rem;
-    margin-left: 10px;
-    cursor: pointer;
-    order: 3;
-  }
+.nav-toggle:checked ~ div {
+  display: block;
 }
 
-// .flex {
-//   padding: 10px;
-//   display: flex;
-//   flex-flow: column wrap;
-//   justify-content: flex-start;
-//   align-items: center;
-// }
+.hover-light:hover {
+  color: darken(#dfaa43, 10%);
+}
+
+// DESKTOP VERSION
+
+@media screen and (min-width: 800px) {
+  .hamburger {
+    display: none;
+  }
+
+  .toggle-container {
+    display: flex;
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-basis: auto;
+    flex-grow: 0;
+    order: 0;
+    margin-left: 1rem;
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+
+    flex-flow: row nowrap;
+    margin-left: 0.3rem;
+    text-transform: none;
+  }
+
+  .nav {
+    flex-flow: row nowrap;
+
+    &-input {
+      &-container {
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      &-searchbox {
+        border-radius: 100px;
+        width: 40vw;
+        // border: 2px solid red;
+        padding-left: 0.5rem;
+
+        margin-left: 3rem;
+      }
+    }
+
+    &-menu {
+      flex-flow: row nowrap;
+      margin-left: 0;
+      text-transform: uppercase;
+    }
+  }
+}
 </style>

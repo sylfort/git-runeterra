@@ -1,17 +1,17 @@
 <template>
   <div class="dropdown">
-    <button class="dropbtn btn btn-primary" @click="isOpen = !isOpen">Search Filters</button>
-      <div v-if="isOpen" class="dropdown-content">
-        <div>
-          <sets />
-          <regions />
-          <mana />
-          <types />
-          <rarity />
-          <keyword />
-          <tags />
-        </div>
+    <div class="dropbtn" @click="toggleOpen">Search Filters</div>
+    <div v-if="isOpen" class="dropdown-content">
+      <div>
+        <sets />
+        <regions @click="toggleOpen" />
+        <mana @click="toggleOpen" />
+        <types @click="toggleOpen" />
+        <rarity @click="toggleOpen" />
+        <keyword @click="toggleOpen" />
+        <tags @click="toggleOpen" />
       </div>
+    </div>
   </div>
 </template>
 
@@ -28,21 +28,24 @@ export default {
     Mana,
     Types,
   },
-  data() {
-    return {
-      isOpen: false,
-    };
-  },
-};
+  data: () => ({
+    isOpen: false,
+  }),
 
+  methods: {
+    toggleOpen() {
+      this.isOpen = !this.isOpen;
+    },
+  },
+
+};
 </script>
 
-<style scoped>
- /* The container <div> - needed to position the dropdown content */
+<style lang="scss">
+/* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
-  margin: 5px;
   /* border: 1px solid green; */
 }
 
@@ -55,12 +58,19 @@ export default {
   margin-top: 37px;
   padding-right: 5px;
   padding-top: 20px;
-  background-color:rgba(5, 17, 29, 0.973);
-  color:rgb(179, 180, 208);
+  background-color: rgba(5, 17, 29, 0.973);
+  color: rgb(179, 180, 208);
   min-width: 360px;
   min-height: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+
+  @media only screen and (max-width: 800px) {
+    margin: 1rem 0;
+    padding: 0;
+    min-width: 0;
+    position: relative;
+  }
 }
 
 /* Links inside the dropdown */
@@ -85,8 +95,8 @@ export default {
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+.dropbtn:hover,
+.dropbtn:focus {
+  cursor: pointer;
 }
-
 </style>

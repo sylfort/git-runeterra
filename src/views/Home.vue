@@ -1,9 +1,9 @@
 <template>
   <div class="app bg-color">
     <!-- Body -->
-    <div>
+    <div class="hero">
       <div class="main-title">Git Runeterra</div>
-      <div class="main-text">
+      <div v-if="isSearching" class="main-text">
         Check all versions of your favorite cards in Runeterra and build decks
         from all patches!
       </div>
@@ -29,6 +29,12 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Home",
   components: {},
+
+  data() {
+    return {
+      isSearching: true,
+    };
+  },
 
   computed: {
     cards() {
@@ -76,19 +82,34 @@ export default defineComponent({
 <style lang="scss" scoped>
 .app {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   text-align: center;
   min-height: 100%;
   height: 100%;
   width: 65vw;
+  flex-grow: 2;
 
-  /* Quando for tela pequena de celular, vai crescer pra 90% da tela */
-  @media only screen and (max-width: 600px) {
+  /* Quando for tela pequena de celular, vai crescer pra 100% da tela */
+  @media only screen and (max-width: 800px) {
     width: 100%;
   }
 
   color: rgba(255, 255, 255, 0.9);
+}
+
+.hero{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  // min-height: 75vh;
+  // height: 100%;
+  flex-grow: 1;
+  flex-basis: 100vh;
+
+    @media only screen and (min-width: 800px) {
+    min-height: 83vh;
+  }
 }
 
 .main-title {
@@ -105,7 +126,7 @@ export default defineComponent({
   margin: 40px;
   min-width: 495px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 900px) {
     min-width: 0px;
   }
 }

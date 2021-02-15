@@ -2,15 +2,14 @@
   <div class="background-img"></div>
 
   <div class="flex">
-    <Header />
+    <Header @click="routerName"/>
 
     <div class="main">
-      <router-view/>
+      <router-view />
     </div>
 
     <Footer />
   </div>
-
 </template>
 
 <script>
@@ -35,7 +34,6 @@ library.add(faUserSecret);
 // }
 
 export default {
-
   components: {
     Header,
     Footer,
@@ -67,22 +65,24 @@ export default {
       console.log(this);
       this.title = newTitle;
     },
-
+    routerName() {
+      console.log(this.$route.name);
+    },
   },
 };
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-html, body {
-    height:100%; /*both html and body*/
-    min-height: 100%;
-    font-family: 'Open Sans', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+html,
+body {
+  height: 100%; /*both html and body*/
+  width: 100%;
+  min-height: 100%;
+  font-family: "Open Sans", sans-serif;
 }
 body {
-    margin: 0; /*reset default margin*/
-    min-height: 75rem;
-    padding-top: 4.5rem;
+  margin: 0; /*reset default margin*/
 }
 
 img {
@@ -94,13 +94,15 @@ img {
 .flex {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
 }
 
-.background-img{
+.background-img {
   position: fixed;
-  left:0;
+  left: 0;
   top: 0;
-        /* Add the blur effect */
+  /* Add the blur effect */
   // filter: blur(5px);
   // -webkit-filter: blur(6px);
 
@@ -110,20 +112,25 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('~@/assets/taric.jpg');
+  background-image: url("~@/assets/taric.jpg");
 
   z-index: -1;
 }
 
 .main {
   // border: 1px solid rgb(0, 0, 255);
-  padding: 10px;
+  padding: 1rem;
   color: rgba(163, 163, 163, 0.719);
-  margin:30px auto;
+  margin: 0.8rem auto;
 
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+
+  @media only screen and (max-width: 800px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .bg-color {
