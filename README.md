@@ -1,9 +1,23 @@
 # vue_test
 
 ## todos
-- pagina do login, onde vai poder cadastrar?
-- limpar o filtro, clear?
-- input search esta pequeno, mas o campo grande
+<!-- - pagina do login
+  - Email
+  - Senha
+- No cadastro:
+  - Verificar se as senhas batem
+  - Verificar se aceitou os termos
+  - Verificar se email 'e valido
+  - Verificar se nao tem nada em branco
+  - criar funcao de cadastro e deixar o obj pronto {name: "", email: "", password: ""}
+  - printa o obj
+- Store `auth` 
+  - autenticacao -->
+  css login autenticacao
+  node.js introducao
+  axios introducao
+  arrumar computador
+  instalar docker
 
 ## Project setup
 ```

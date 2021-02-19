@@ -1,6 +1,9 @@
 <template>
 <div class="regions-block">
-    <span>Regions</span>
+    <div class="regions-title">
+                <span>Regions</span>
+                <span class="dropdown-clean" @click="clickHandler('clear')">clear</span>
+            </div>
   <div class="regions-grid">
       <div class="region-card" @click="clickHandler('Bilgewater')">
           <img class="img" src="https://cdn-lor.mobalytics.gg/production/images/svg/region/BW.svg">
@@ -45,6 +48,11 @@ export default {
       console.log("clicked", regionRef);
       // colocar algum estilo
 
+      if (regionRef === "clear") {
+        this.$router.push("");
+        return;
+      }
+
       // Adicionar o tipo ao query da pagina
       console.log(this);
       this.$router.push(`/?regionRef=${regionRef}`);
@@ -54,10 +62,27 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .regions-block{
     display: block;
     margin-bottom: 20px;
+}
+
+.regions-title{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-clean{
+  font-weight: 600;
+  font-size: 0.7rem;
+
+  &:hover{
+    cursor: pointer;
+    color: darken(#dfaa43, 10%);
+  }
 }
 
 .regions-grid{

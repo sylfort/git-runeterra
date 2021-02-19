@@ -1,6 +1,9 @@
 <template>
 <div class="types-block">
-    <span>Types</span>
+  <div class="types-title">
+                <span>Types</span>
+                <span class="dropdown-clean">clear</span>
+            </div>
     <div class="types-grid">
         <champion />
         <follower />
@@ -21,6 +24,10 @@ import Champion from "@/components/Champion.vue";
 import Follower from "@/components/Follower.vue";
 
 export default {
+  components: {
+    Champion,
+    Follower,
+  },
   methods: {
     clickHandler(type) {
       console.log("clicked", type);
@@ -31,16 +38,29 @@ export default {
       this.$router.push(`/?type=${type}`);
     },
   },
-  components: {
-    Champion,
-    Follower,
-  },
 };
 </script>
 
 <style>
 .types-block{
     margin-bottom: 20px;
+}
+
+.types-title{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-clean{
+  font-weight: 600;
+  font-size: 0.7rem;
+
+  /* &:hover{
+    cursor: pointer;
+    color: darken(#dfaa43, 10%);
+  } */
 }
 
 .types-grid{

@@ -1,5 +1,7 @@
 <template>
-  <div class="background-img"></div>
+  <div class="background-img">
+    <div class="background-filter"></div>
+  </div>
 
   <div class="flex">
     <Header @click="routerName"/>
@@ -15,23 +17,6 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
-
-library.add(faUserSecret);
-// const App = {
-//   init() {},
-//   store: {
-//     state: {},
-//   },
-//   events: {},
-//   controllers: {},
-//   elements: {
-//     app: null,
-//     createElements: function(){},
-//     createElements() {}
-//   }
-// }
 
 export default {
   components: {
@@ -96,11 +81,20 @@ img {
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
+  background-color: rgba(25, 20, 48, 0.74);
+  margin-top: 3.5rem;
+
+     @media only screen and (max-width: 850px) {
+    min-width: 100%;
+    margin-top: 0;
+
+  }
+
 }
 
 .background-img {
   position: fixed;
-  left: 0;
+  // left: 0;
   top: 0;
   /* Add the blur effect */
   // filter: blur(5px);
@@ -109,12 +103,19 @@ img {
   /* Center and scale the image nicely */
   height: 100%;
   width: 100%;
+  // margin-top: 25px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("~@/assets/taric.jpg");
+  overflow: auto;
+  min-height: 100%;
 
   z-index: -1;
+
+  //  @media only screen and (max-width: 800px) {
+  //   background-position: right-center;
+  // }
 }
 
 .main {
@@ -127,7 +128,7 @@ img {
   flex-direction: column;
   flex-grow: 1;
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 850px) {
     margin-top: 0;
     margin-bottom: 0;
   }

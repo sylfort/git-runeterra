@@ -5,11 +5,11 @@
       <div>
         <sets />
         <regions @click="toggleOpen" />
-        <mana @click="toggleOpen" />
+        <!-- <mana @click="toggleOpen" /> -->
         <types @click="toggleOpen" />
-        <rarity @click="toggleOpen" />
+        <!-- <rarity @click="toggleOpen" />
         <keyword @click="toggleOpen" />
-        <tags @click="toggleOpen" />
+        <tags @click="toggleOpen" /> -->
       </div>
     </div>
   </div>
@@ -18,14 +18,14 @@
 <script>
 import Sets from "@/components/Sets.vue";
 import Regions from "@/components/Regions.vue";
-import Mana from "@/components/Mana.vue";
+// import Mana from "@/components/Mana.vue";
 import Types from "@/components/Types.vue";
 
 export default {
   components: {
     Sets,
     Regions,
-    Mana,
+    // Mana,
     Types,
   },
   data: () => ({
@@ -65,7 +65,7 @@ export default {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 850px) {
     margin: 1rem 0;
     padding: 0;
     min-width: 0;

@@ -1,12 +1,17 @@
 <template>
-          <div class="types" @click="clickHandler('Champion')">
-            <img class="img" src="https://cdn-lor.mobalytics.gg/production/images/svg/card-type/champion.svg" alt="">
-            <span>Champions</span>
-            </div>
+  <div class="types" @click="clickHandler('Champion')">
+    <img
+      class="img"
+      src="https://cdn-lor.mobalytics.gg/production/images/svg/card-type/champion.svg"
+      alt=""
+    />
+    <span>Champions</span>
+  </div>
 </template>
 
 <script>
 export default {
+  components: {},
   methods: {
     clickHandler(supertype) {
       console.log("clicked", supertype);
@@ -17,12 +22,8 @@ export default {
       this.$router.push(`/?supertype=${supertype}`);
     },
   },
-  components: {
-
-  },
 };
 </script>
 
 <style>
-
 </style>

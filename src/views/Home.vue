@@ -10,7 +10,7 @@
       <div class="cards">
         <div v-for="card in cards" :key="card.name">
           <div class="card-one">
-            <img :src="card.assets[0].gameAbsolutePath" alt="" />
+            <img :src="card.assets[0].gameAbsolutePath" alt="" :class="imgClicked && big" @click="imgClicked =!imgClicked"/>
           </div>
         </div>
       </div>
@@ -33,6 +33,8 @@ export default defineComponent({
   data() {
     return {
       isSearching: true,
+      imgClicked: false,
+      big: "big",
     };
   },
 
@@ -64,6 +66,7 @@ export default defineComponent({
           return card.supertype === this.$route.query.supertype;
         }
 
+        // http://localhost:8081/?regionRef=asd
         if (this.$route.query.regionRef) {
           return card.regionRef === this.$route.query.regionRef;
         }
@@ -75,6 +78,10 @@ export default defineComponent({
 
   created() {
     console.log(this.$store.state);
+  },
+
+  methods: {
+
   },
 });
 </script>
@@ -106,6 +113,7 @@ export default defineComponent({
   // height: 100%;
   flex-grow: 1;
   flex-basis: 100vh;
+  outline: 3px solid #dfaa43;
 
     @media only screen and (min-width: 800px) {
     min-height: 83vh;
@@ -116,6 +124,7 @@ export default defineComponent({
   padding-bottom: 20px;
   color: #dfaa43;
   font-size: 20px;
+  margin: 1rem 0;
 }
 
 .cards {
@@ -126,14 +135,23 @@ export default defineComponent({
   margin: 40px;
   min-width: 495px;
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 850px) {
     min-width: 0px;
   }
+}
+
+.big{
+  width: 300px;
 }
 
 .card-one {
   /* flex: calc(250/376); */
   width: 200px;
+  transition: 200ms;
+
+  // &:hover{
+  //   width: 300px;
+  // }
 }
 
 .card-two {

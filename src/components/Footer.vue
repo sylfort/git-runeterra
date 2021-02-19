@@ -12,7 +12,7 @@ export default {
 
 .footer {
   // border: 1px solid green;
-  position: fixed;
+  position: relative;
   padding: 5px;
   width: 100%;
   height: 3rem;

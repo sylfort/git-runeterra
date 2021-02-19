@@ -1,8 +1,10 @@
 <template>
     <div class="set-select">
+
         <div class="set-select-flex">
-            <div>
-                Sets
+            <div class="set-title">
+                <span>Sets</span>
+                <span class="dropdown-clean">clear</span>
             </div>
             <div>
                 <div id="dropset" :class= "{ dropsetActive: isOpen }" @click="isOpen = !isOpen">
@@ -28,13 +30,30 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
     .set-select {
   position: relative;
   display: inline-block;
   /* outline: 1px solid yellow; */
   min-width: 100%;
   margin-bottom: 15px;
+}
+
+.set-title{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-clean{
+  font-weight: 600;
+  font-size: 0.7rem;
+
+  &:hover{
+    cursor: pointer;
+    color: darken(#dfaa43, 10%);
+  }
 }
 
 .set-select-flex{
