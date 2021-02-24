@@ -17,7 +17,14 @@
               {{ error.value }}
             </span>
           </div>
+
+          <div v-if="errorLogin.field === 'username'" class="error">
+            <span style="color: red">
+              {{ errorLogin.value }}
+            </span>
+          </div>
         </div>
+
         <div class="sign-up-input">
           <label for="">Password</label>
           <input
@@ -30,6 +37,12 @@
           <div v-if="error.field === 'password'" class="error">
             <span style="color: red">
               {{ error.value }}
+            </span>
+          </div>
+
+          <div v-if="errorLogin.field === 'password'" class="error">
+            <span style="color: red">
+              {{ errorLogin.value }}
             </span>
           </div>
         </div>
@@ -62,6 +75,8 @@ export default {
 
     // Primeiro declara a variavel que vai receber o erro, aqui indicamos qual 'e o campo e qual a mensagem de erro
     error: { field: "", value: "" },
+    errorLogin: { field: "", value: "" },
+
   }),
 
   created() {
@@ -74,10 +89,34 @@ export default {
       console.log(this.form);
     },
 
-    onLogin() {
+    // wrongUser() {
+    //   this.errorLogin.field = "";
+    //   this.errorLogin.value = "";
+
+    //   if (this.form.username !== this.$store.userData.username) {
+    //     this.errorLogin.field = "username";
+    //     this.errorLogin.value = "Wrong Username";
+    //     console.log(this.errorLogin);
+    //   }
+    // },
+
+    // wrongPassword() {
+    //   this.errorLogin.field = "";
+    //   this.errorLogin.value = "";
+
+    //   if (this.form.password !== this.$store.userData.password) {
+    //     this.errorLogin.field = "password";
+    //     this.errorLogin.value = "Wrong Password";
+    //     console.log(this.errorLogin);
+    //   }
+    // },
+
+    async onLogin() {
       // 3. Limpa o erro
       this.error.field = "";
       this.error.value = "";
+      this.errorLogin.field = "";
+      this.errorLogin.value = "";
 
       // 4. verificamos se nao existe username e preenchemos o erro
       if (!this.form.username) {
@@ -94,13 +133,30 @@ export default {
         return;
       }
 
+      // if (!this.$store.serverLogin.result.token) {
+      //   this.errorLogin.field = "password";
+      //   this.errorLogin.value = "Wrong Password";
+      //   console.log(this.errorLogin);
+      //   return;
+      // }
+
       const oldUser = {
         username: this.form.username,
         password: this.form.password,
       };
       console.log("login", this.form);
 
-      this.$store.dispatch("login", oldUser);
+      const res = await this.$store.dispatch("login", oldUser);
+      console.log("ssssssssss", res);
+      if (res === "WRONG_USER") {
+        this.errorLogin.field = "username";
+        this.errorLogin.value = "Invalid Username";
+      }
+
+      if (res === "WRONG_PASSWORD") {
+        this.errorLogin.field = "password";
+        this.errorLogin.value = "Invalid Password";
+      }
     },
   },
 };

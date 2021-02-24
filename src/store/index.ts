@@ -2325,6 +2325,8 @@ export default createStore({
           token: response.result.token,
         });
       }
+
+      return response.status;
     },
   },
 
