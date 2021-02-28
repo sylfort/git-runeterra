@@ -62,6 +62,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   components: {},
 
@@ -76,7 +78,6 @@ export default {
     // Primeiro declara a variavel que vai receber o erro, aqui indicamos qual 'e o campo e qual a mensagem de erro
     error: { field: "", value: "" },
     errorLogin: { field: "", value: "" },
-
   }),
 
   created() {
@@ -140,22 +141,23 @@ export default {
       //   return;
       // }
 
-      const oldUser = {
+      // console.log("login", this.form);
+
+      const res = await this.$store.dispatch("login", {
         username: this.form.username,
         password: this.form.password,
-      };
-      console.log("login", this.form);
+      });
 
-      const res = await this.$store.dispatch("login", oldUser);
       console.log("ssssssssss", res);
-      if (res === "WRONG_USER") {
+
+      if (res === "WRONG_USER_PASS") {
         this.errorLogin.field = "username";
         this.errorLogin.value = "Invalid Username";
-      }
-
-      if (res === "WRONG_PASSWORD") {
         this.errorLogin.field = "password";
         this.errorLogin.value = "Invalid Password";
+      } else if (res === "OK") {
+        console.log("Login succesful");
+        this.$router.push("/");
       }
     },
   },

@@ -10,7 +10,12 @@
       <div class="cards">
         <div v-for="card in cards" :key="card.name">
           <div class="card-one">
-            <img :src="card.assets[0].gameAbsolutePath" alt="" :class="imgClicked && big" @click="imgClicked =!imgClicked"/>
+            <img
+              :src="card.assets[0].gameAbsolutePath"
+              alt=""
+              :class="imgClicked && big"
+              @click="imgClicked = !imgClicked"
+            />
           </div>
         </div>
       </div>
@@ -77,12 +82,10 @@ export default defineComponent({
   },
 
   created() {
-    console.log(this.$store.state);
+    this.$store.dispatch("getCards");
   },
 
-  methods: {
-
-  },
+  methods: {},
 });
 </script>
 
@@ -105,7 +108,7 @@ export default defineComponent({
   color: rgba(255, 255, 255, 0.9);
 }
 
-.hero{
+.hero {
   display: flex;
   flex-flow: column nowrap;
   justify-content: stretch;
@@ -115,7 +118,7 @@ export default defineComponent({
   flex-basis: 100vh;
   outline: 3px solid #dfaa43;
 
-    @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 800px) {
     min-height: 83vh;
   }
 }
@@ -140,7 +143,7 @@ export default defineComponent({
   }
 }
 
-.big{
+.big {
   width: 300px;
 }
 

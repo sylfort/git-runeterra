@@ -99,6 +99,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   components: {
     // Signup,
@@ -174,6 +176,20 @@ export default {
         this.error.field = "checkmark";
         this.error.value = "Please confirm that you accept our Terms of Service.";
       }
+
+      axios.post("http://localhost:5000/signup", {
+        data: {
+          username: this.form.username,
+          email: this.form.email,
+          password: this.form.password,
+        },
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       const newUser = {
         username: this.form.username,

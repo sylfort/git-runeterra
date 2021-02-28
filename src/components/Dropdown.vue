@@ -56,7 +56,8 @@ export default {
   position: fixed;
   right: 0;
   margin-top: 37px;
-  padding-right: 5px;
+  // margin-right: 1rem;
+  padding-right: .5rem;
   padding-top: 20px;
   background-color: rgba(5, 17, 29, 0.973);
   color: rgb(179, 180, 208);

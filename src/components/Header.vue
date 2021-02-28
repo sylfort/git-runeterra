@@ -213,7 +213,7 @@ ul {
 }
 
 .nav-dropdown {
-  margin: 0.2rem 1rem;
+  margin: 0.2rem 1rem 0.2rem 0;
   white-space: nowrap;
 }
 
