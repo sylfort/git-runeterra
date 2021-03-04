@@ -158,6 +158,8 @@ export default {
       } else if (res === "OK") {
         console.log("Login succesful");
         this.$router.push("/");
+
+        this.$store.dispatch("getMyDecks");
       }
     },
   },

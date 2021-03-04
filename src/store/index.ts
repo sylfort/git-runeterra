@@ -23,24 +23,6 @@ const serverSignup = async (payload: any) => {
     },
   };
 };
-const serverLogin = async (payload: any) => {
-  if (payload.username !== userData.username) {
-    return { status: "WRONG_USER", result: { id: 0, token: "", username: "" } };
-  }
-
-  if (payload.password !== userData.password) {
-    return { status: "WRONG_PASSWORD", result: { id: 0, token: "", username: "" } };
-  }
-
-  return {
-    status: "OK",
-    result: {
-      id: userData.id,
-      token: userData.token,
-      username: userData.username,
-    },
-  };
-};
 
 export default createStore({
   state: {
@@ -122,6 +104,15 @@ export default createStore({
       if (response.data.status === "OK") {
         commit("setCards", response.data.results);
       }
+    },
+
+    async getMyDecks({ commit, state }) {
+      const options = { headers: { Authorization: state.auth.token } };
+      console.log("options", options);
+      const response = await axios
+        .get("http://localhost:5000/decks", options);
+
+      console.log("my decks", response);
     },
   },
 
