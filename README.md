@@ -14,10 +14,6 @@
 - Store `auth` 
   - autenticacao -->
   css login autenticacao
-  node.js introducao
-  axios introducao
-  arrumar computador
-  instalar docker
 
 ## Project setup
 ```
