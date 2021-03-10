@@ -1,6 +1,8 @@
-# vue_test
+# Git Runeterra
 
-## todos
+A web app where players can search for cards of the game Legends of Runeterra outside of the game client.
+
+## to dos
 <!-- - pagina do login
   - Email
   - Senha
@@ -13,7 +15,7 @@
   - printa o obj
 - Store `auth` 
   - autenticacao -->
-  css login autenticacao
+  backend authentication
 
 ## Project setup
 ```
